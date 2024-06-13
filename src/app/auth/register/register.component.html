@@ -7,20 +7,31 @@
     </div>
     <div class="col-md-6 p-5 d-flex flex-column align-items-center justify-content-center">
       <h2>Crie sua Conta</h2>
-      <form>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div class="form-group">
           <label for="name">Nome</label>
-          <input id="name" class="form-control" [(ngModel)]="name" name="name">
+          <input id="name" class="form-control" formControlName="name">
+          <div *ngIf="registerForm.get('name')!.invalid && registerForm.get('name')!.touched" class="text-danger">
+            Nome é obrigatório.
+          </div>
         </div>
         <div class="form-group mt-3">
           <label for="email">Email</label>
-          <input id="email" type="email" class="form-control" [(ngModel)]="email" name="email">
+          <input id="email" type="email" class="form-control" formControlName="email">
+          <div *ngIf="registerForm.get('email')!.invalid && registerForm.get('email')!.touched" class="text-danger">
+            <div *ngIf="registerForm.get('email')!.getError('required')">Email é obrigatório.</div>
+            <div *ngIf="registerForm.get('email')!.getError('email')">Formato de email inválido.</div>
+          </div>
         </div>
         <div class="form-group mt-3">
           <label for="password">Senha</label>
-          <input id="password" type="password" class="form-control" [(ngModel)]="password" name="password">
+          <input id="password" type="password" class="form-control" formControlName="password">
+          <div *ngIf="registerForm.get('password')!.invalid && registerForm.get('password')!.touched" class="text-danger">
+            <div *ngIf="registerForm.get('password')!.getError('required')">Senha é obrigatória.</div>
+            <div *ngIf="registerForm.get('password')!.getError('minlength')">A senha deve ter pelo menos 6 caracteres.</div>
+          </div>
         </div>
-        <button type="button" class="btn btn-primary btn-block mt-4" (click)="register()">Criar Conta</button>
+        <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="registerForm.invalid">Criar Conta</button>
       </form>
     </div>
   </div>

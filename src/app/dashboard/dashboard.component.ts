@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
     const promotersPercentage = (promoters / totalResponses) * 100;
 
     this.pieChartData = {
-      labels: ['Detractors (1-6)', 'Passives (7-8)', 'Promoters (9-10)'],
+      labels: ['Detratores (1-6)', 'Neutros (7-8)', 'Promotores (9-10)'],
       datasets: [{
         data: [detractorsPercentage, passivesPercentage, promotersPercentage],
         backgroundColor: ['#ff6384', '#ffcd56', '#4bc0c0'],

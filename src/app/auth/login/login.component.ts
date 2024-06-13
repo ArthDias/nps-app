@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -8,19 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+  loginForm: FormGroup;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
+  }
 
-  login() {
-    if (this.email && this.password) {
-      const isAuthenticated = this.authService.login(this.email, this.password);
-      if (!isAuthenticated) {
+  onSubmit() {
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      const isAuthenticated = this.authService.login(email, password);
+      if (isAuthenticated) {
+        this.router.navigate(['/dashboard']).then(() => {
+          window.location.reload();
+        });
+      } else {
         this.errorMessage = 'Invalid email or password';
       }
-      this.router.navigate(['/dashboard']);
     }
   }
 }

@@ -1,9 +1,13 @@
 <div class="container">
-  <div class="card padding rounded-5 shadow">
+  <div [formGroup]="motivacaoForm" class="card padding rounded-5 shadow">
     <h1 class="mb-5 text-center">Em poucas palavras, descreva a motivação da sua nota.</h1>
-    <textarea class="form-control mt-3 mb-4" [(ngModel)]="reason" placeholder="Escreva aqui sua resposta..."></textarea>
+    <textarea class="form-control mt-3" formControlName="reason" placeholder="Escreva aqui sua resposta..."></textarea>
+    <div *ngIf="motivacaoForm.get('reason')!.invalid && motivacaoForm.get('reason')!.touched" class="text-danger">
+      <small *ngIf="motivacaoForm.get('reason')!.getError('required')">Motivação é obrigatória.</small>
+      <small *ngIf="motivacaoForm.get('reason')!.getError('minlength')">A motivação deve ter pelo menos 6 caracteres.</small>
+    </div>
     <div class="text-end">
-      <button (click)="next()" class="btn btn-primary mt-3">Avançar</button>
+      <button [disabled]="motivacaoForm.invalid" (click)="next()" class="btn btn-primary mt-3">Avançar</button>
     </div>
   </div>
 </div>

@@ -2,16 +2,23 @@
   <div class="row">
     <div class="col-md-6 p-5 d-flex flex-column align-items-center justify-content-center">
       <h2>Entre</h2>
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="email">Email</label>
-          <input id="email" type="email" class="form-control" [(ngModel)]="email" name="email">
+          <input id="email" type="email" class="form-control" formControlName="email">
+          <div *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched" class="text-danger">
+            <small *ngIf="loginForm.get('email')!.getError('required')">Email é obrigatório.</small>
+            <small *ngIf="loginForm.get('email')!.getError('email')">Formato de email inválido.</small>
+          </div>
         </div>
         <div class="form-group mt-3">
           <label for="password">Senha</label>
-          <input id="password" type="password" class="form-control" [(ngModel)]="password" name="password">
+          <input id="password" type="password" class="form-control" formControlName="password">
+          <div *ngIf="loginForm.get('password')!.invalid && loginForm.get('password')!.touched" class="text-danger">
+            <small *ngIf="loginForm.get('password')!.getError('required')">Senha é obrigatória.</small>
+          </div>
         </div>
-        <button type="button" class="btn btn-primary btn-block mt-4" (click)="login()">Entrar</button>
+        <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="loginForm.invalid">Entrar</button>
         <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
       </form>
     </div>
