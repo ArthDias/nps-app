@@ -1,0 +1,27 @@
+<div class="container rounded-5">
+  <div class="row">
+    <div class="col-md-6 p-5 bg-primary text-white d-flex flex-column align-items-center justify-content-center rounded-5">
+      <h1>Bem-vindo de volta!</h1>
+      <p>Clique no botão abaixo para entrar com sua conta</p>
+      <button type="button" class="btn btn-outline-light mt-3" routerLink="/login">Entrar</button>
+    </div>
+    <div class="col-md-6 p-5 d-flex flex-column align-items-center justify-content-center">
+      <h2>Crie sua Conta</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input id="name" class="form-control" [(ngModel)]="name" name="name">
+        </div>
+        <div class="form-group mt-3">
+          <label for="email">Email</label>
+          <input id="email" type="email" class="form-control" [(ngModel)]="email" name="email">
+        </div>
+        <div class="form-group mt-3">
+          <label for="password">Senha</label>
+          <input id="password" type="password" class="form-control" [(ngModel)]="password" name="password">
+        </div>
+        <button type="button" class="btn btn-primary btn-block mt-4" (click)="register()">Criar Conta</button>
+      </form>
+    </div>
+  </div>
+</div>

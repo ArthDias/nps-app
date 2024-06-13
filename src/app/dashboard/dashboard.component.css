@@ -1,0 +1,17 @@
+.container {
+  height: 80vh;
+}
+
+.pieChart {
+  width: 300px !important;
+  height: auto !important;
+}
+
+.barChart {
+  width: 300px !important;
+  height: auto !important;
+}
+
+.table-responsive {
+  margin-top: 20px;
+}

@@ -1,27 +1,57 @@
-# NpsApp
+# Imobiliária
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+Este é um projeto Angular 15 para um sistema de avaliação NPS de empresas. A aplicação permite fazer avaliações e possui um dashboard para análise das avaliações.
 
-## Development server
+Acesse o através do [link.](https://nps-app.vercel.app)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Funcionalidades
 
-## Code scaffolding
+- Avaliação NPS
+- Login e Criação de usuários
+- Dashboard de avaliações
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologias Utilizadas
 
-## Build
+- Angular 15
+- Bootstrap
+- Ng2 Charts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Pré-requisitos
 
-## Running unit tests
+- Node.js v18
+- Angular CLI v15 
+```bash
+npm install -g @angular/cli@15.0.3
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalação
 
-## Running end-to-end tests
+1. Clone o repositório:
+   
+```bash
+git clone https://github.com/ArthDias/nps-app.git
+```
+2. Navegue até o diretório do projeto:
+   
+```bash
+cd nps-app
+```
+3. Instale as dependências:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+```
+```bash
+npm i bootstrap@5.3.3
+```
+```bash
+npm install ng2-charts@^4.0.0 chart.js
+```
 
-## Further help
+## Executando a Aplicação
+Inicie o servidor de desenvolvimento (lembre-se de estar no diretório desafio-imobiliaria):
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve
+```
+Abra o navegador e vá para http://localhost:4200. Ou visualize através do [link.](https://nps-app.vercel.app)

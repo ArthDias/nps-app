@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-6 bg-light rounded-5 ">
+      <div class="row d-flex justify-content-center p-5">
+        <div class="col-12 d-flex justify-content-center mb-5 pieChart">
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [options]="pieChartOptions"
+                  [type]="'pie'">
+          </canvas>
+        </div>
+        <div class="col-12 d-flex justify-content-center barChart">
+          <canvas baseChart
+                  [data]="barChartData"
+                  [options]="barChartOptions"
+                  [type]="'bar'">
+          </canvas>
+        </div>
+        <h4 class="text-center mt-5">Visão Geral</h4>
+      </div>
+    </div>
+    <div class="col-md-6 mt-3">
+      <div class="row mb-3">
+        <div class="col-12">
+          <select class="form-select" (change)="onFilterChange($event)">
+            <option value="all">Todas as avaliações</option>
+            <option value="detractors">Detratores</option>
+            <option value="passives">Neutros</option>
+            <option value="promoters">Promotores</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center">
+              <thead>
+                <tr>
+                  <th>Nota</th>
+                  <th>Motivação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let response of filteredResponses">
+                  <td>{{ response.score }}</td>
+                  <td>{{ response.reason }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
