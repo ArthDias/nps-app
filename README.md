@@ -1,4 +1,4 @@
-# Imobiliária
+# NPS
 
 Este é um projeto Angular 15 para um sistema de avaliação NPS de empresas. A aplicação permite fazer avaliações e possui um dashboard para análise das avaliações.
 
